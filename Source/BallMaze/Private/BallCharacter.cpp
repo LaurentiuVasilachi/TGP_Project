@@ -20,15 +20,15 @@ ABallCharacter::ABallCharacter()
 	Mesh1PComponent->SetSimulatePhysics(true);
 	Mesh1PComponent->SetLinearDamping(0.1f);
 	Mesh1PComponent->SetAngularDamping(0.1f);
-	Mesh1PComponent->BodyInstance.MassScale = 3.5f;
-	Mesh1PComponent->BodyInstance.MaxAngularVelocity = 500.0f;
+	Mesh1PComponent->BodyInstance.MassScale = 5.0f;
+	Mesh1PComponent->BodyInstance.MaxAngularVelocity = 5000.0f;
 	Mesh1PComponent->SetNotifyRigidBodyCollision(true);
 	RootComponent = Mesh1PComponent;
 
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm0"));
 	SpringArm->SetupAttachment(RootComponent);
 	SpringArm->bDoCollisionTest = false;
-	SpringArm->bAbsoluteRotation = false; // Rotation of the ball should not affect rotation of boom
+	SpringArm->bAbsoluteRotation = true; // Rotation of the ball should not affect rotation of boom
 	SpringArm->RelativeRotation = FRotator(-45.f, 0.f, 0.f);
 	SpringArm->TargetArmLength = 1200.f;
 	SpringArm->bEnableCameraLag = false;
