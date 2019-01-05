@@ -22,6 +22,8 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera")
 		class UCameraComponent* CameraComponent;
 
+	
+
 public:
 	// Sets default values for this pawn's properties
 	AMyPawn();
@@ -42,6 +44,9 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = Ball)
 		float RollTorque;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Gameplay")
+		bool bIsCarryingPickup;
 
 public:
 	/** Returns Mesh1P subobject **/

@@ -33,9 +33,15 @@ void AFinishZone::HandleOverlap(UPrimitiveComponent* OverlappedComponent, AActor
 
 	AMyPawn* NewPawn = Cast<AMyPawn>(OtherActor);
 
-	NewPawn->DisableInput(nullptr);
-
-	OnMissionCompleted();
+	if (NewPawn->bIsCarryingPickup)
+	{
+		NewPawn->DisableInput(nullptr);
+		OnMissionCompleted();
+	}
+	else
+	{
+		UGameplayStatics::PlaySound2D(this, ObjectiveMissingSound);
+	}
 }
 
 void AFinishZone::BeginPlay()
